@@ -29,6 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::resource("tasks",TaskController::class);
     // searching  routes
     Route::get("/taskssearch",[TaskController::class,'search'])->name("tasks.search");
+    Route::get("/usersSearch",[UserController::class,'search'])->name("users.search");
+    Route::get("/projectsSearch",[ProjectController::class,'search'])->name("projects.search");
+    Route::get("/clientsSearch",[ClientController::class,'search'])->name("clients.search");
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

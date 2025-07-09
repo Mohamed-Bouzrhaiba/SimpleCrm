@@ -11,17 +11,6 @@
             <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between items-center">
                 <span>{{ __("List Of Clients") }}</span>
 
-                 <form method="GET" action="{{ route('clients.search') }}" class="w-full md:w-auto flex items-center gap-2">
-            <input
-                type="text"
-                name="query"
-                placeholder="Search users..."
-                value="{{ request('query') }}"
-                class="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                Search
-            </button>
                 <a href="{{ route('clients.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     + Add New Client
                 </a>
@@ -38,7 +27,7 @@
             </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
-            @foreach ($Clients as $client)
+            @foreach ($clients as $client)
                 <tr>
                     <td class="px-4 py-2">{{ $client->id }}</td>
                     <td class="px-4 py-2">{{ $client->client_name }}</td>
@@ -64,9 +53,6 @@
     </table>
 
 
-    <div class="mt-4">
-        {{ $Clients->links() }}
-    </div>
 </div>
             </div>
         </div>

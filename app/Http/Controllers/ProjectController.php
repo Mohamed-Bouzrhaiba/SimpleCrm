@@ -8,6 +8,7 @@ use App\Models\Project;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -76,5 +77,11 @@ class ProjectController extends Controller
          Gate::authorize(\App\PermissionEnum::DELETE_PROJECTS);
         $project->delete();
         return redirect()->route("projects.index")->with('success','project deleted succefully');
+    }
+    public function search(Request $request){
+        $query = $request->input("query");
+        $projects = Project::where("title","like","%{$query}%")
+                    ->orWhere("description","like","%{$query}%")->get();
+        return view("projects.results",compact("projects","query"));
     }
 }

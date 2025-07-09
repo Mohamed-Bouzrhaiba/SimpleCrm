@@ -10,18 +10,8 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between items-center">
                     <span>{{ __("List Of Projects") }}</span>
-                    <form method="GET" action="{{ route('projects.search') }}" class="w-full md:w-auto flex items-center gap-2">
-            <input
-                type="text"
-                name="query"
-                placeholder="Search projects..."
-                value="{{ request('query') }}"
-                class="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                Search
-            </button>
-        </form>
+
+
                     <a href="{{ route('projects.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         + Add Project
                     </a>
@@ -70,9 +60,7 @@
                         </tbody>
                     </table>
 
-                    <div class="mt-4">
-                        {{ $projects->links() }}
-                    </div>
+
                 </div>
             </div>
         </div>

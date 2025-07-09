@@ -77,4 +77,10 @@ class ClientController extends Controller
         $client->delete();
         return redirect()->route('clients.index')->with('success','client deleted succefully');
     }
+     public function search(Request $request){
+        $query = $request->input("query");
+        $clients = Client::where("client_name","like","%{$query}%")
+                    ->get();
+        return view("clients.results",compact("clients","query"));
+    }
 }

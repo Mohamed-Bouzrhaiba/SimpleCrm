@@ -69,4 +69,12 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route("users.index")->with('success','user deleted succefully');
     }
+
+    public function search(Request $request){
+        $query = $request->input("query");
+        $users = User::where("first_name","like","%{$query}%")
+        ->orWhere("last_name","like","%{$query}%")->get();
+        return view("users.results",compact("users","query"));
+    }
+
 }
